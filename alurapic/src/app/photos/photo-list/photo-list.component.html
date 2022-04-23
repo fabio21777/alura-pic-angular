@@ -12,4 +12,8 @@
   </form>
 </div>
 <app-photos [photos]="photos | filterByDescription: filter"></app-photos>
+<app-load-buttom
+  (click)="load()"
+  [hasMore]="hasMore">
+</app-load-buttom>
 
