@@ -1,17 +1,9 @@
+<app-search
+(onTyping)="filter = $event"
+[value]="filter"
+>
 
-<div class="text-center mt-3 mb-3">
-  <form>
-    <i aria-hidden="true" class="fa fa-search margin-icon"></i>
-      <input
-          class="rounded"
-          type="search"
-          placeholder="search..."
-          autofocus
-          (keyup)="onKeyUp($event)"
-        >
-
-  </form>
-</div>
+</app-search>
 <app-photos [photos]="photos | filterByDescription: filter"></app-photos>
 <app-load-buttom
   (click)="load()"
