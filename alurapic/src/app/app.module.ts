@@ -8,6 +8,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { SigninComponent } from './home/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     PhotosModule,
     ErrorsModule,
+    SharedModule,
     ReactiveFormsModule,
     CommonModule,
   ],

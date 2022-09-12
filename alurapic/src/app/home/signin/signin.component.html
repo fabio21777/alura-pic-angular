@@ -8,11 +8,11 @@
         class="form-control" 
         placeholder="Nome do usuario" 
         autofocus>
-        <small
-         *ngIf="userName?.errors?.['required']"
-          class="text-danger d-block mt-2">
-           o nome do usuario é obrigatorio
-        </small>
+        
+        <app-vmensagem
+        *ngIf="userName?.errors?.['required']"
+        [texto]="'o nome do usuario é obrigatorio'">
+      ></app-vmensagem>
       </div>
 
       <div class="form-group">
@@ -21,12 +21,10 @@
         type="password" 
         class="form-control" 
         placeholder="Senha">
-
-        <small
-        *ngIf="password?.errors?.['required']"
-         class="text-danger d-block mt-2">
-          a senha é obrigatoria
-       </small>
+        <app-vmensagem
+          *ngIf="password?.errors?.['required']"
+          [texto]="'A senha é obrigatória'">
+        ></app-vmensagem>
       </div>
 
       <div class="d-grid gap-2 col-12 mx-auto">
