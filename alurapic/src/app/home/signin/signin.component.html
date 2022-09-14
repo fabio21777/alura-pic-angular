@@ -1,9 +1,9 @@
 <div class='signin-content'>
   <h4 class="text-center ">Login</h4>
-  <form [formGroup]="loginForm" class="form ">
+  <form [formGroup]="loginForm" (submit)="login()" class="form">
     <div class="col-4 d-grid gap-3">
       <div class="form-group">
-        <input 
+        <input #userNameInput
         formControlName="userName" 
         class="form-control" 
         placeholder="Nome do usuario" 
@@ -28,7 +28,7 @@
       </div>
 
       <div class="d-grid gap-2 col-12 mx-auto">
-        <button class="btn btn-primary" type="button">Entrar</button>
+        <button class="btn btn-primary" type="submit">Entrar</button>
       </div>
       <p>Não tem usuario? <a> Cadastra-se agora</a></p>
     </div>

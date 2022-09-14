@@ -9,12 +9,14 @@ import { SigninComponent } from './home/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [	
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    HeaderComponent
    ],
   imports: [
     BrowserModule,
