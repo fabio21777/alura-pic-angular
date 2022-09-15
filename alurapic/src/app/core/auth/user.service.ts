@@ -9,12 +9,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class UserService {
 
+  userName: string | undefined;
+
   private userSubject = new BehaviorSubject<User>(null as any);
 
 
 constructor(private tokenService:TokenService) { 
   this.tokenService.hasToken() && this.decodeAndNotify();
-
 }
 
   setToken(token:string){
@@ -30,6 +31,7 @@ constructor(private tokenService:TokenService) {
     const token = this.tokenService.getToken();
     if(token){
       const user = jwt_decode(token) as User;
+      this.userName = user.name;
       this.userSubject.next(user);
     }
 
@@ -37,6 +39,14 @@ constructor(private tokenService:TokenService) {
   logout(){
     this.tokenService.removeToken();
     this.userSubject.next(null as any);
+  }
+
+  getUserName(){
+    return this.userName;
+  }
+
+  isLogged(){
+    return this.tokenService.hasToken();
   }
 
 }

@@ -6,12 +6,20 @@ import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
+import { AuthGuardService } from './core/auth/authGuard.service';
 
 const routes: Routes = [
-  { path: 'user/:userName', component: PhotoListComponent, resolve: { photos: PhotoListResolver } },
-  { path: 'p/add', component: PhotoFormComponent },
-  { path: '', component: SigninComponent },
-  { path: '**', component:  NotFoundComponent},
+  { path: 'user/:userName',
+    component: PhotoListComponent, 
+    resolve: { photos: PhotoListResolver } },
+
+  { path: 'p/add', 
+    component: PhotoFormComponent },
+  { path: '',
+     component: SigninComponent ,
+     canActivate: [AuthGuardService] },
+  { path: '**', 
+    component:  NotFoundComponent},
 
 ];
 
