@@ -1,5 +1,5 @@
-<div class ="sigup-content">
-  
+<div class="sigup-content">
+
 </div>
 <h4 class="text-center">Registre-se qui!</h4>
 
@@ -17,7 +17,7 @@
       <app-vmensagem *ngIf="fullName?.errors?.['required']" [texto]="'O nome completo é obrigatório'"></app-vmensagem>
       <app-vmensagem *ngIf="fullName?.errors?.['minlength']" [texto]="'o minimo de caracteres é 3'"></app-vmensagem>
       <app-vmensagem *ngIf="fullName?.errors?.['maxlength']" [texto]="'o maximo de caracteres é 40'"></app-vmensagem>
-      
+
     </div>
 
     <div class="form-group">
@@ -25,7 +25,10 @@
       <app-vmensagem *ngIf="userName?.errors?.['required']" [texto]="'O nome do usuario é obrigatório'"></app-vmensagem>
       <app-vmensagem *ngIf="userName?.errors?.['minlength']" [texto]="'o minimo de caracteres é 3'"></app-vmensagem>
       <app-vmensagem *ngIf="userName?.errors?.['maxlength']" [texto]="'o maximo de caracteres é 30'"></app-vmensagem>
-      <app-vmensagem *ngIf="userName?.errors?.['loweCase']" [texto]="'o usuario deve ter apenas letras minusculas '"></app-vmensagem>
+      <app-vmensagem *ngIf="userName?.errors?.['loweCase']" [texto]="'o usuario deve ter apenas letras minusculas '">
+      </app-vmensagem>
+      <app-vmensagem *ngIf="userName?.errors?.['userNameTaken']" [texto]="'O usuario já está sendo utilizado '" ></app-vmensagem>
+        <small *ngIf="userName?.valid" class="text-success">Usuario valido</small>
     </div>
 
     <div class="form-group">
@@ -35,7 +38,7 @@
       <app-vmensagem *ngIf="password?.errors?.['maxlength']" [texto]="'o maximo de caracteres é 14'"></app-vmensagem>
     </div>
 
-    <button [disabled]="sigUp.invalid" class="btn btn-primary btn-block">Registre-se</button>
+    <button [disabled]="sigUp.invalid || sigUp.pending" class="btn btn-primary btn-block">Registre-se</button>
     <p>ja tem usuario?<a [routerLink]="['']">Entre agora!</a></p>
   </div>
 </form>

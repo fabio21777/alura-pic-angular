@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loweCaseValidate } from 'src/app/shared/validate/loweCaseValidate';
+import { SigupNotTakenValidationService } from './sigupNotTakenValidation.service';
 
 @Component({
   selector: 'app-sigup',
@@ -26,14 +27,16 @@ export class SigupComponent implements OnInit {
       loweCaseValidate,
       Validators.minLength(2),
       Validators.maxLength(30)
-    ]),
+    ],
+    this.sigupNotTakenValidationService.chekenUserNameTaken()
+    ),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(14)
     ])
   });
-  constructor(private router: Router) { }
+  constructor(private router: Router,private sigupNotTakenValidationService:SigupNotTakenValidationService) { }
 
   get email() { return this.sigUp.get('email'); }
 
