@@ -10,12 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
+import { RouterModule } from '@angular/router';
+import { SigupComponent } from './home/sigup/sigup.component';
 
 
 @NgModule({
   declarations: [	
     AppComponent,
     SigninComponent,
+    SigupComponent,
     HeaderComponent
    ],
   imports: [
@@ -26,6 +29,7 @@ import { HeaderComponent } from './components/header/header.component';
     SharedModule,
     ReactiveFormsModule,
     CommonModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
