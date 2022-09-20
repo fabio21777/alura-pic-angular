@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platformDetector.service';
 import { loweCaseValidate } from 'src/app/shared/validate/loweCaseValidate';
 import { NewUser } from './interfaces/newUser';
 import { SignUpService } from './SignUp.service';
@@ -11,7 +12,9 @@ import { SigupNotTakenValidationService } from './sigupNotTakenValidation.servic
   templateUrl: './sigup.component.html',
   styleUrls: ['./sigup.component.css']
 })
-export class SigupComponent  {
+export class SigupComponent implements OnInit {
+  @ViewChild('emailInput')
+  emailInput!: ElementRef<HTMLInputElement>;
 
   sigUp: FormGroup = new FormGroup({
     email: new FormControl('',
@@ -41,7 +44,14 @@ export class SigupComponent  {
   constructor(
     private router: Router
     ,private sigupNotTakenValidationService:SigupNotTakenValidationService
-    ,private signUpService:SignUpService) { }
+    ,private signUpService:SignUpService
+    ,private platformDetectorService: PlatformDetectorService
+    ) {
+      
+    }
+  ngOnInit(): void {
+    this.platformDetectorService.isPlatformBrowser() && this.emailInput.nativeElement.focus();
+  }
 
   get email() { return this.sigUp.get('email'); }
 
@@ -60,6 +70,9 @@ export class SigupComponent  {
       });
     }
   }
-  
+  ngAfterViewInit(): void {
+    this.platformDetectorService.isPlatformBrowser() &&
+    this.emailInput.nativeElement.focus();
+  }
 
 }

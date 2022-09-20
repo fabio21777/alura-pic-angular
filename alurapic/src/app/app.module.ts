@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { SigupComponent } from './home/sigup/sigup.component';
+import { HomeComponent } from './home/home/home.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SigupComponent } from './home/sigup/sigup.component';
     AppComponent,
     SigninComponent,
     SigupComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
    ],
   imports: [
     BrowserModule,
