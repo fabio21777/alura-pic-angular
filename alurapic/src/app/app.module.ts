@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { SigupComponent } from './home/sigup/sigup.component';
 import { HomeComponent } from './home/home/home.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptorService } from './core/auth/request-interceptor.service';
 
 
 @NgModule({
@@ -33,7 +35,13 @@ import { HomeComponent } from './home/home/home.component';
     CommonModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
