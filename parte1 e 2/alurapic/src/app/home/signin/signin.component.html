@@ -1,0 +1,36 @@
+<div class='signin-content'>
+  <h4 class="text-center ">Login</h4>
+  <form [formGroup]="loginForm" (submit)="login()" class="form">
+    <div class="col-12 d-grid gap-3">
+      <div class="form-group">
+        <input #userNameInput
+        formControlName="userName" 
+        class="form-control" 
+        placeholder="Nome do usuario" 
+        autofocus>
+        
+        <app-vmensagem
+        *ngIf="userName?.errors?.['required']"
+        [texto]="'o nome do usuario é obrigatorio'">
+      ></app-vmensagem>
+      </div>
+
+      <div class="form-group">
+        <input 
+        formControlName="password" 
+        type="password" 
+        class="form-control" 
+        placeholder="Senha">
+        <app-vmensagem
+          *ngIf="password?.errors?.['required']"
+          [texto]="'A senha é obrigatória'">
+        ></app-vmensagem>
+      </div>
+
+      <div class="d-grid gap-2 col-12 mx-auto">
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </div>
+      <p>Não tem usuario?   <a [routerLink]="['sigup']"> Cadastra-se agora</a></p>
+    </div>
+  </form>
+</div>

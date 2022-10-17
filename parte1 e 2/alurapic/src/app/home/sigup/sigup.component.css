@@ -1,0 +1,14 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 50%;
+    margin: auto;
+}
+
+.sigup-content{
+   margin-top: 10em;
+}
