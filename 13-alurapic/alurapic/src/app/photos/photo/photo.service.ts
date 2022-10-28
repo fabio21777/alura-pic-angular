@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Photo } from "./photo";
+import { PhotoComment } from '../photo-details/photo-comments/photo-comment';
 
 const API = 'http://localhost:3000';
 
@@ -29,8 +30,20 @@ export class PhotoService {
         formData.append('imageFile', file);
         return this.http.post(API + '/photos/upload', formData);
     }   
-    findById(id: string) {
+    findById(photoId: number) {
 
-        return this.http.get<Photo>(API + '/photos/' + id);
+        return this.http.get<Photo>(API + '/photos/' + photoId);
+    }
+
+    getComments(photoId: number) {
+        return this.http.get<PhotoComment[]>(
+            API + '/photos/' + photoId + '/comments');
+    }
+    addComment(photoId: number, commentText: string) {
+        return this.http.post(
+            API + '/photos/' + photoId + '/comments',
+            {commentText}
+        );    
+
     } 
 }
