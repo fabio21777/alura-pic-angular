@@ -1,18 +1,28 @@
-<div class="bg-white border"  *ngIf="(photo$ | async) as photo">
-    <div class="row">
-      <div class="col-lg-8">
-        <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
-      </div>
-  
-      <div class="col-lg-4 p-4">
-        <small>
-          <p class="text-left break-word">{{photo?.description}}</p>
-          <hr>
-        </small>
-        <ap-photo-comments
-        [photoId] = "photo.id"
-        >
-        </ap-photo-comments>
-      </div>
+<div class="bg-white border" *ngIf="photo$ | async as photo">
+  <div class="row">
+    <div class="col-lg-8">
+      <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
+    </div>
+
+    <div class="col-lg-4 p-4">
+      <small>
+        <p class="text-left break-word">{{ photo?.description }}</p>
+        <hr />
+        <div class="text-left mb-4">
+          <i class="fa fa-comment-o fa-2x mr-2 ml-2"></i>{{ photo.comments }}
+          <i (click)="remove()"  class=" delete-photo fa fa-trash-o fa-2x pull-right"></i>
+        </div>
+      </small>
+      <ap-photo-comments
+        [photoId]="photo.id"
+        *ngIf="photo.allowComments; else commentsDisabled"
+      >
+      </ap-photo-comments>
+      <ng-template #commentsDisabled>
+        <div class="alert alert-warning">
+          Comments are disabled for this photo
+        </div>
+      </ng-template>
     </div>
   </div>
+</div>
