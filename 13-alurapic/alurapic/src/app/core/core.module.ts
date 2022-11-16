@@ -1,3 +1,4 @@
+import { AlertModule } from './../shared/components/alert/alert.mudule';
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { FooterComponent } from './footer/footer.component';
     exports: [HeaderComponent,FooterComponent],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        AlertModule
     ],
     providers: [
         {
