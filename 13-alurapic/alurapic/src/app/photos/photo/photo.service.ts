@@ -5,9 +5,9 @@ import { Photo } from "./photo";
 import { PhotoComment } from '../photo-details/photo-comments/photo-comment';
 import { catchError, map } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';
-import { enviroment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-const API = enviroment.apiUrl;
+const API = environment.apiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class PhotoService {
